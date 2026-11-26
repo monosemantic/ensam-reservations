@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
@@ -29,5 +30,6 @@ public class Departement {
 
   @OneToMany(mappedBy = "departement", fetch = FetchType.LAZY)
   @ToString.Exclude
+  @EqualsAndHashCode.Exclude
   private List<Salle> salles = new ArrayList<>();
 }

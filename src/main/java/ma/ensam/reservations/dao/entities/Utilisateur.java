@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import lombok.EqualsAndHashCode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,5 +48,6 @@ public class Utilisateur {
 
   @OneToMany(mappedBy = "utilisateur", fetch = FetchType.LAZY)
   @ToString.Exclude
+  @EqualsAndHashCode.Exclude
   private List<Reservation> reservations = new ArrayList<>();
 }

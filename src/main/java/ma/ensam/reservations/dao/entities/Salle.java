@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import lombok.EqualsAndHashCode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,11 +40,12 @@ public class Salle {
   @Column(name = "type", length = 20, nullable = false)
   private TypeSalle type;
 
-  @ManyToOne
-  @JoinColumn(name = "departement_id")
+  @ManyToOne(optional = false)
+  @JoinColumn(name = "departement_id", nullable = false)
   private Departement departement;
 
   @OneToMany(mappedBy = "salle", fetch = FetchType.LAZY)
   @ToString.Exclude
+  @EqualsAndHashCode.Exclude
   private List<Reservation> reservations = new ArrayList<>();
 }

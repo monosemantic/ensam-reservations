@@ -33,8 +33,9 @@ public class EnsamReservationsApplication {
         amphiA = salleRepository.save(amphiA);
         salleRepository.save(tp1);
 
-        Utilisateur admin = new Utilisateur(null, "Hssain", "Sara", "sara.admin@ensam.ma", Role.ADMIN, null);
-        Utilisateur prof = new Utilisateur(null, "Alami", "Youssef", "y.alami@ensam.ma", Role.ENSEIGNANT, null);
+        Utilisateur admin = new Utilisateur(null, "Bourghel", "Badr Eddine", "badreddine.admin@ensam.ma", Role.ADMIN,
+            null);
+        Utilisateur prof = new Utilisateur(null, "Achoubir", "Adam", "adam.alami@ensam.ma", Role.ENSEIGNANT, null);
         utilisateurRepository.save(admin);
         prof = utilisateurRepository.save(prof);
 
