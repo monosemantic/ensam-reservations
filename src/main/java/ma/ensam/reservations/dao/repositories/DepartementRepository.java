@@ -4,5 +4,8 @@ import ma.ensam.reservations.dao.entities.Departement;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface DepartementRepository extends JpaRepository<Departement, Long> {
+
   boolean existsByNomIgnoreCase(String nom);
+
+  boolean existsByNomIgnoreCaseAndIdNot(String nom, Long id);
 }
