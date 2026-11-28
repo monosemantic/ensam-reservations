@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{template}">
+<body>
+<div layout:fragment="content">
+  <h3>Départements</h3>
+  <table class="table table-striped mt-3">
+    <thead><tr><th>Nom</th><th>Nombre de salles</th></tr></thead>
+    <tbody>
+      <tr th:each="d : ${listDepartements}">
+        <td th:text="${d.nom}"></td>
+        <td th:text="${#lists.size(d.salles)}"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
