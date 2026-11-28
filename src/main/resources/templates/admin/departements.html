@@ -4,12 +4,32 @@
 <body>
 <div layout:fragment="content">
   <h3>Départements</h3>
-  <table class="table table-striped mt-3">
-    <thead><tr><th>Nom</th><th>Nombre de salles</th></tr></thead>
+
+  <!-- NEW: the add button -->
+  <a class="btn btn-primary my-3" th:href="@{/admin/departements/nouveau}">+ Nouveau département</a>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Nombre de salles</th>
+        <th>Actions</th>   <!-- NEW: column header -->
+      </tr>
+    </thead>
     <tbody>
       <tr th:each="d : ${listDepartements}">
         <td th:text="${d.nom}"></td>
         <td th:text="${#lists.size(d.salles)}"></td>
+
+        <!-- NEW: the actions cell -->
+        <td>
+          <a class="btn btn-sm btn-secondary"
+             th:href="@{/admin/departements/{id}/modifier(id=${d.id})}">Modifier</a>
+          <form class="d-inline" th:action="@{/admin/departements/{id}/supprimer(id=${d.id})}" method="post"
+                onsubmit="return confirm('Supprimer ce département ?')">
+            <button class="btn btn-sm btn-danger">Supprimer</button>
+          </form>
+        </td>
       </tr>
     </tbody>
   </table>
