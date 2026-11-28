@@ -23,8 +23,8 @@ public class Departement {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @NotEmpty
-  @Size(max = 100)
+  @NotEmpty(message = "Le nom du departement est obligatoire")
+  @Size(max = 100, message = "100 caractéres maximum")
   @Column(name = "nom", length = 100, nullable = false, unique = true)
   private String nom;
 
