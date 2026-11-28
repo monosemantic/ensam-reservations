@@ -6,11 +6,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface SalleRepository extends JpaRepository<Salle, Long> {
+
   boolean existsByNomIgnoreCase(String nom);
 
   boolean existsByDepartementId(Long departementId);
-
-  boolean existsBySalleId(Long id);s
 
   boolean existsByNomIgnoreCaseAndIdNot(String nom, Long id);
 

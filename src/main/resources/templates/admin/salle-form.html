@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{template}">
+<body>
+<div layout:fragment="content">
+  <h3 th:text="${salleForm.id == null} ? 'Nouvelle salle' : 'Modifier la salle'"></h3>
+  <form th:action="@{/admin/salles/save}" th:object="${salleForm}" method="post" class="w-50">
+    <input type="hidden" th:field="*{id}">
+    <div class="mb-3">
+      <label class="form-label" for="nom">Nom</label>
+      <input id="nom" type="text" class="form-control" th:field="*{nom}">
+      <div class="text-danger" th:errors="*{nom}"></div>
+    </div>
+    <div class="mb-3">
+      <label class="form-label" for="capacite">Capacité</label>
+      <input id="capacite" type="number" class="form-control" th:field="*{capacite}">
+      <div class="text-danger" th:errors="*{capacite}"></div>
+    </div>
+    <div class="mb-3">
+      <label class="form-label" for="type">Type</label>
+      <select id="type" class="form-select" th:field="*{type}">
+        <option value="">-- Choisir --</option>
+        <option th:each="t : ${types}" th:value="${t}" th:text="${t}"></option>
+      </select>
+      <div class="text-danger" th:errors="*{type}"></div>
+    </div>
+    <div class="mb-3">
+      <label class="form-label" for="departementId">Département</label>
+      <select id="departementId" class="form-select" th:field="*{departementId}">
+        <option value="">-- Choisir --</option>
+        <option th:each="d : ${departements}" th:value="${d.id}" th:text="${d.nom}"></option>
+      </select>
+      <div class="text-danger" th:errors="*{departementId}"></div>
+    </div>
+    <button type="submit" class="btn btn-primary">Enregistrer</button>
+    <a class="btn btn-secondary" th:href="@{/admin/salles}">Annuler</a>
+  </form>
+</div>
+</body>
+</html>

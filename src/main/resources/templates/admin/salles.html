@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{template}">
+<body>
+<div layout:fragment="content">
+  <h3>Gestion des salles</h3>
+  <a class="btn btn-primary my-3" th:href="@{/admin/salles/nouvelle}">+ Nouvelle salle</a>
+  <table class="table table-striped">
+    <thead><tr><th>Nom</th><th>Type</th><th>Capacité</th><th>Département</th><th>Actions</th></tr></thead>
+    <tbody>
+      <tr th:each="s : ${listSalles}">
+        <td th:text="${s.nom}"></td>
+        <td th:text="${s.type}"></td>
+        <td th:text="${s.capacite}"></td>
+        <td th:text="${s.departement.nom}"></td>
+        <td>
+          <a class="btn btn-sm btn-secondary" th:href="@{/admin/salles/{id}/modifier(id=${s.id})}">Modifier</a>
+          <form class="d-inline" th:action="@{/admin/salles/{id}/supprimer(id=${s.id})}" method="post"
+                onsubmit="return confirm('Supprimer cette salle ?')">
+            <button class="btn btn-sm btn-danger">Supprimer</button>
+          </form>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
