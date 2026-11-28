@@ -10,5 +10,9 @@ public interface SalleRepository extends JpaRepository<Salle, Long> {
 
   boolean existsByDepartementId(Long departementId);
 
+  boolean existsBySalleId(Long id);s
+
+  boolean existsByNomIgnoreCaseAndIdNot(String nom, Long id);
+
   Page<Salle> findByNomContainsIgnoreCase(String keyword, Pageable pageable);
 }
